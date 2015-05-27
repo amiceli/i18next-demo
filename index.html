@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>i18n</title>
+
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        main {
+            width: 100%;
+            height: 100%;
+            background: #eee;
+            overflow: hidden;
+            text-align: center;
+        }
+        main h1 {
+            text-align: center;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: 100;
+            font-size: 60px;
+            margin-bottom: 100px;
+        }
+        main #alert {
+            background : #9d1311;
+            width: 100px;
+            height: 100px;
+            color : white;
+            text-align: center;
+            font-size: 60px;
+            margin: 7px auto;
+            border-radius: 100px;
+            box-shadow: none;
+            border : none;
+            outline: none;
+            transition : all 0.2s ease-in;
+        }
+        #alert:hover {
+            width: 120px;
+            height: 120px;
+            border-radius: 120px;
+            cursor: pointer;
+        }
+        footer {
+            width: 100%;
+            height: 80px;
+            background: #222;
+            text-align: center;
+            position: absolute;
+            bottom : 0;
+        }
+        footer button {
+            width: 200px;
+            height: 50px;
+            margin-top: 15px;
+        }
+        footer button:first-child {
+            margin-right: 10px;
+        }
+        footer button:last-child {
+            margin-left: 10px;
+        }
+        img {
+            width: 350px;
+            position: absolute;
+            left: -50px;
+            top: -50px;
+            transform: rotate(10deg);
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"/>
+</head>
+<body>
+
+    <img src="" data-i18n="[src]flag" alt=""/>
+
+    <main>
+        <h1 data-i18n="title">
+            Traduiez moi !
+        </h1>
+
+        <button id="alert">
+            <span class="fa fa-exclamation"></span>
+        </button>
+    </main>
+
+    <footer>
+        <button data-i18n="button.english" id="en">
+            Traduire en anglais
+        </button>
+        <button data-i18n="button.french" id="fr">
+            Traduire en francais
+        </button>
+        <button data-i18n="button.italian" id="it">
+            Traduire en italien
+        </button>
+    </footer>
+
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/1.6.3/i18next-1.6.3.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            i18n.init({
+                resGetPath: 'locales/__lng__/__ns__.json'
+            }, function(t) {
+                // i18n est maintenant initialisé
+                $('body').i18n();
+
+                $('#alert').click(function() {
+                    alert($.t("alert"));
+                });
+            });
+
+            $('#fr, #it, #en').click(function() {
+                i18n.init({
+                    resGetPath: 'locales/__lng__/__ns__.json',
+                    lng : $(this).prop('id')
+                }, function(t) {
+                    // i18n est maintenant initialisé
+                    $('body').i18n();
+                });
+            });
+
+
+        });
+    </script>
+</body>
+</html>

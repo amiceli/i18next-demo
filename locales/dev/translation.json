@@ -1,0 +1,11 @@
+{
+  "title": "Notre titre",
+  "button": {
+    "french": "Traduire en français",
+    "italian": "Traduire en italien",
+    "english": "Traduire en anglais"
+  },
+  "flag": {
+    "italian": "img/Italian.jpg"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Our title",
+  "button": {
+    "french": "Translate in french",
+    "italian": "Translate in italian",
+    "english": "Translate in english"
+  },
+  "flag": "img/english.jpg",
+  "alert" : "Click on OK to close."
+}
